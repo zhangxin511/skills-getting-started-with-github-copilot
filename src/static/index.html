@@ -3,47 +3,162 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mergington High School Activities</title>
+    <title>🌈 Fun Typing Practice for Kids! 🎯</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <header>
-      <h1>Mergington High School</h1>
-      <h2>Extracurricular Activities</h2>
+      <h1>🌟 Super Fun Typing Practice! 🌟</h1>
+      <p>Let's learn to type together! 🎈</p>
     </header>
 
     <main>
-      <section id="activities-container">
-        <h3>Available Activities</h3>
-        <div id="activities-list">
-          <!-- Activities will be loaded here -->
-          <p>Loading activities...</p>
+      <!-- Progress Section -->
+      <section id="progress-section">
+        <div class="stats-container">
+          <div class="stat-box">
+            <span class="stat-emoji">⭐</span>
+            <span class="stat-label">Words Done:</span>
+            <span id="words-count">0</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-emoji">🎯</span>
+            <span class="stat-label">Accuracy:</span>
+            <span id="accuracy">100%</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-emoji">🏆</span>
+            <span class="stat-label">Level:</span>
+            <span id="current-level">Letters</span>
+          </div>
         </div>
       </section>
 
-      <section id="signup-container">
-        <h3>Sign Up for an Activity</h3>
-        <form id="signup-form">
-          <div class="form-group">
-            <label for="email">Student Email:</label>
-            <input type="email" id="email" required placeholder="your-email@mergington.edu" />
+      <!-- Typing Game Section -->
+      <section id="game-section">
+        <div class="game-container">
+          <div class="word-display">
+            <h2>Type this word:</h2>
+            <div id="target-word">🌈 Click Start! 🌈</div>
           </div>
-          <div class="form-group">
-            <label for="activity">Select Activity:</label>
-            <select id="activity" required>
-              <option value="">-- Select an activity --</option>
-              <!-- Activity options will be loaded here -->
-            </select>
+          
+          <div class="typing-area">
+            <input type="text" id="typing-input" placeholder="Type here..." disabled>
+            <div class="input-feedback" id="feedback"></div>
           </div>
-          <button type="submit">Sign Up</button>
-        </form>
-        <div id="message" class="hidden"></div>
+          
+          <div class="game-controls">
+            <button id="start-btn" class="btn btn-primary">🚀 Start Typing!</button>
+            <button id="next-btn" class="btn btn-secondary" style="display: none;">➡️ Next Word</button>
+            <button id="change-level-btn" class="btn btn-accent">🎨 Change Level</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Level Selection Modal -->
+      <div id="level-modal" class="modal">
+        <div class="modal-content">
+          <h3>🎨 Choose Your Level!</h3>
+          <div class="level-buttons">
+            <button class="level-btn" data-level="letters">🔤 Letters</button>
+            <button class="level-btn" data-level="easy">😊 Easy Words</button>
+            <button class="level-btn" data-level="animals">🐾 Animals</button>
+            <button class="level-btn" data-level="colors">🌈 Colors</button>
+            <button class="level-btn" data-level="numbers">🔢 Numbers</button>
+            <button class="level-btn" data-level="family">👨‍👩‍👧‍👦 Family</button>
+          </div>
+          <button id="close-modal" class="btn btn-primary">✅ Done</button>
+        </div>
+      </div>
+
+      <!-- Encouragement Section -->
+      <section id="encouragement-section">
+        <div id="encouragement-message">You're doing great! Keep typing! 🌟</div>
+      </section>
+
+      <!-- Virtual Keyboard Section -->
+      <section id="keyboard-section">
+        <h3>🎹 Virtual Keyboard - Find the Letter!</h3>
+        <div class="keyboard-container">
+          <!-- Number row -->
+          <div class="keyboard-row">
+            <div class="key" data-key="1" data-finger="left-pinky">1</div>
+            <div class="key" data-key="2" data-finger="left-ring">2</div>
+            <div class="key" data-key="3" data-finger="left-middle">3</div>
+            <div class="key" data-key="4" data-finger="left-index">4</div>
+            <div class="key" data-key="5" data-finger="left-index">5</div>
+            <div class="key" data-key="6" data-finger="right-index">6</div>
+            <div class="key" data-key="7" data-finger="right-index">7</div>
+            <div class="key" data-key="8" data-finger="right-middle">8</div>
+            <div class="key" data-key="9" data-finger="right-ring">9</div>
+            <div class="key" data-key="0" data-finger="right-pinky">0</div>
+          </div>
+          
+          <!-- Top letter row -->
+          <div class="keyboard-row">
+            <div class="key" data-key="q" data-finger="left-pinky">Q</div>
+            <div class="key" data-key="w" data-finger="left-ring">W</div>
+            <div class="key" data-key="e" data-finger="left-middle">E</div>
+            <div class="key" data-key="r" data-finger="left-index">R</div>
+            <div class="key" data-key="t" data-finger="left-index">T</div>
+            <div class="key" data-key="y" data-finger="right-index">Y</div>
+            <div class="key" data-key="u" data-finger="right-index">U</div>
+            <div class="key" data-key="i" data-finger="right-middle">I</div>
+            <div class="key" data-key="o" data-finger="right-ring">O</div>
+            <div class="key" data-key="p" data-finger="right-pinky">P</div>
+          </div>
+          
+          <!-- Home row -->
+          <div class="keyboard-row">
+            <div class="key home-key" data-key="a" data-finger="left-pinky">A</div>
+            <div class="key home-key" data-key="s" data-finger="left-ring">S</div>
+            <div class="key home-key" data-key="d" data-finger="left-middle">D</div>
+            <div class="key home-key" data-key="f" data-finger="left-index">F</div>
+            <div class="key home-key" data-key="g" data-finger="left-index">G</div>
+            <div class="key home-key" data-key="h" data-finger="right-index">H</div>
+            <div class="key home-key" data-key="j" data-finger="right-index">J</div>
+            <div class="key home-key" data-key="k" data-finger="right-middle">K</div>
+            <div class="key home-key" data-key="l" data-finger="right-ring">L</div>
+            <div class="key home-key" data-key=";" data-finger="right-pinky">;</div>
+          </div>
+          
+          <!-- Bottom row -->
+          <div class="keyboard-row">
+            <div class="key" data-key="z" data-finger="left-pinky">Z</div>
+            <div class="key" data-key="x" data-finger="left-ring">X</div>
+            <div class="key" data-key="c" data-finger="left-middle">C</div>
+            <div class="key" data-key="v" data-finger="left-index">V</div>
+            <div class="key" data-key="b" data-finger="left-index">B</div>
+            <div class="key" data-key="n" data-finger="right-index">N</div>
+            <div class="key" data-key="m" data-finger="right-index">M</div>
+            <div class="key" data-key="," data-finger="right-middle">,</div>
+            <div class="key" data-key="." data-finger="right-ring">.</div>
+            <div class="key" data-key="/" data-finger="right-pinky">/</div>
+          </div>
+          
+          <!-- Space bar -->
+          <div class="keyboard-row">
+            <div class="key space-key" data-key=" " data-finger="thumbs">SPACE</div>
+          </div>
+        </div>
+        
+        <!-- Finger Guide -->
+        <div class="finger-guide">
+          <h4>🖐️ Finger Colors Guide:</h4>
+          <div class="finger-legend">
+            <span class="finger-color left-pinky">🤙 Left Pinky</span>
+            <span class="finger-color left-ring">💍 Left Ring</span>
+            <span class="finger-color left-middle">🖕 Left Middle</span>
+            <span class="finger-color left-index">👉 Left Index</span>
+            <span class="finger-color thumbs">👍 Thumbs</span>
+            <span class="finger-color right-index">👉 Right Index</span>
+            <span class="finger-color right-middle">🖕 Right Middle</span>
+            <span class="finger-color right-ring">💍 Right Ring</span>
+            <span class="finger-color right-pinky">🤙 Right Pinky</span>
+          </div>
+        </div>
       </section>
     </main>
-
-    <footer>
-      <p>&copy; 2023 Mergington High School</p>
-    </footer>
 
     <script src="app.js"></script>
   </body>
